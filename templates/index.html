@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}SecureMessage{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="text-center mx-auto hero-box">
+    <div class="big-icon"></div>
+    <h1 class="fw-bold display-5">One token. One message.</h1>
+    <p class="lead text-muted">
+      Encrypt text into one portable token. The receiver only needs that token to decrypt it.
+    </p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
+      <a class="btn btn-primary btn-lg" href="{{ url_for('encrypt') }}">Encrypt Message</a>
+      <a class="btn btn-outline-dark btn-lg" href="{{ url_for('decrypt') }}">Decrypt Token</a>
+    </div>
+  </div>
+
+  <div class="row g-4 mt-4">
+    <div class="col-md-4"><div class="feature-card"><h5>1. Write</h5><p>Enter the message you want to protect.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><h5>2. Encrypt</h5><p>Generate one secure AES-256-GCM token.</p></div></div>
+    <div class="col-md-4"><div class="feature-card"><h5>3. Decrypt</h5><p>Paste only that token to recover the original message.</p></div></div>
+  </div>
+
+  <div class="alert alert-warning mt-5">
+    <strong>Important:</strong> the token itself contains everything required for decryption.
+    Anyone with the token can read the message.
+  </div>
+</div>
+{% endblock %}

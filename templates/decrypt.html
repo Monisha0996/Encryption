@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Decrypt Token{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <h2 class="fw-bold mb-1"> Decrypt Token</h2>
+      <p class="text-muted mb-4">Paste one SecureMessage token below.</p>
+
+      <div class="card secure-card">
+        <div class="card-body p-4">
+          {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+          <form method="POST">
+            <label class="form-label fw-semibold">Secure Token</label>
+            <textarea name="secure_token" class="form-control token-box" rows="8" placeholder="Paste token beginning with SM1...." required>{{ request.form.get('secure_token', '') }}</textarea>
+            <button class="btn btn-dark btn-lg w-100 mt-4">Decrypt Token</button>
+          </form>
+        </div>
+      </div>
+
+      {% if decrypted_message is not none %}
+      <div class="card secure-card mt-4">
+        <div class="card-body p-4">
+          <h4 class="text-success fw-bold">✓ Message decrypted</h4>
+          <textarea id="decryptedOutput" class="form-control mt-3" rows="7" readonly>{{ decrypted_message }}</textarea>
+          <button type="button" class="btn btn-outline-success mt-3" onclick="copyText('decryptedOutput', this)">Copy Message</button>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

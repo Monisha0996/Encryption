@@ -1,0 +1,43 @@
+body {
+    background: #f5f7fb;
+    color: #1f2937;
+    min-height: 100vh;
+}
+.navbar {
+    background: linear-gradient(90deg, #172554, #3157d5);
+    padding: 14px 0;
+}
+.hero-box {
+    max-width: 760px;
+}
+.big-icon {
+    font-size: 58px;
+}
+.feature-card {
+    height: 100%;
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid #e6eaf2;
+    box-shadow: 0 8px 24px rgba(31, 41, 55, .05);
+}
+.secure-card {
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(31, 41, 55, .08);
+}
+.form-control {
+    border-radius: 12px;
+    padding: 14px;
+}
+textarea {
+    resize: vertical;
+}
+.token-box {
+    font-family: Consolas, Monaco, monospace;
+    word-break: break-all;
+}
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+}

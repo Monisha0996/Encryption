@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Encrypt Message{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <h2 class="fw-bold mb-1"> Encrypt Message</h2>
+      <p class="text-muted mb-4">Generate one secure token from your message.</p>
+
+      <div class="card secure-card">
+        <div class="card-body p-4">
+          {% if error %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+          <form method="POST">
+            <label class="form-label fw-semibold">Message</label>
+            <textarea name="message" class="form-control" rows="8" placeholder="Enter your message..." required>{{ request.form.get('message', '') }}</textarea>
+            <button class="btn btn-primary btn-lg w-100 mt-4"> Generate Secure Token</button>
+          </form>
+        </div>
+      </div>
+
+      {% if secure_token %}
+      <div class="card secure-card mt-4">
+        <div class="card-body p-4">
+          <h4 class="text-success fw-bold">✓ Secure token generated</h4>
+          <p class="text-muted">Send only this token to the receiver.</p>
+          <textarea id="tokenOutput" class="form-control token-box" rows="8" readonly>{{ secure_token }}</textarea>
+          <button type="button" class="btn btn-outline-primary mt-3" onclick="copyText('tokenOutput', this)">Copy Token</button>
+          <div class="alert alert-danger mt-4 mb-0">
+            Treat this token like a password. Anyone who has it can decrypt the message.
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
